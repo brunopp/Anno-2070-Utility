@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{64D3E4EC-61FA-49B1-9067-84482944F4E2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Anno2070Utility</RootNamespace>
+    <AssemblyName>Anno2070Utility</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\css\bootstrap-theme.css.map" />
+    <Content Include="scripts\css\bootstrap.css.map" />
+    <Content Include="scripts\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="scripts\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="scripts\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\icon_27_0.png" />
+    <Content Include="images\icon_27_1.png" />
+    <Content Include="images\icon_27_100.png" />
+    <Content Include="images\icon_27_101.png" />
+    <Content Include="images\icon_27_108.png" />
+    <Content Include="images\icon_27_109.png" />
+    <Content Include="images\icon_27_110.png" />
+    <Content Include="images\icon_27_12.png" />
+    <Content Include="images\icon_27_124.png" />
+    <Content Include="images\icon_27_13.png" />
+    <Content Include="images\icon_27_130.png" />
+    <Content Include="images\icon_27_131.png" />
+    <Content Include="images\icon_27_133.png" />
+    <Content Include="images\icon_27_134.png" />
+    <Content Include="images\icon_27_135.png" />
+    <Content Include="images\icon_27_136.png" />
+    <Content Include="images\icon_27_137.png" />
+    <Content Include="images\icon_27_138.png" />
+    <Content Include="images\icon_27_139.png" />
+    <Content Include="images\icon_27_140.png" />
+    <Content Include="images\icon_27_141.png" />
+    <Content Include="images\icon_27_142.png" />
+    <Content Include="images\icon_27_143.png" />
+    <Content Include="images\icon_27_144.png" />
+    <Content Include="images\icon_27_145.png" />
+    <Content Include="images\icon_27_148.png" />
+    <Content Include="images\icon_27_15.png" />
+    <Content Include="images\icon_27_151.png" />
+    <Content Include="images\icon_27_153.png" />
+    <Content Include="images\icon_27_154.png" />
+    <Content Include="images\icon_27_155.png" />
+    <Content Include="images\icon_27_156.png" />
+    <Content Include="images\icon_27_157.png" />
+    <Content Include="images\icon_27_158.png" />
+    <Content Include="images\icon_27_160.png" />
+    <Content Include="images\icon_27_161.png" />
+    <Content Include="images\icon_27_162.png" />
+    <Content Include="images\icon_27_163.png" />
+    <Content Include="images\icon_27_164.png" />
+    <Content Include="images\icon_27_165.png" />
+    <Content Include="images\icon_27_167.png" />
+    <Content Include="images\icon_27_17.png" />
+    <Content Include="images\icon_27_171.png" />
+    <Content Include="images\icon_27_172.png" />
+    <Content Include="images\icon_27_173.png" />
+    <Content Include="images\icon_27_181.png" />
+    <Content Include="images\icon_27_182.png" />
+    <Content Include="images\icon_27_183.png" />
+    <Content Include="images\icon_27_184.png" />
+    <Content Include="images\icon_27_185.png" />
+    <Content Include="images\icon_27_186.png" />
+    <Content Include="images\icon_27_187.png" />
+    <Content Include="images\icon_27_19.png" />
+    <Content Include="images\icon_27_192.png" />
+    <Content Include="images\icon_27_194.png" />
+    <Content Include="images\icon_27_197.png" />
+    <Content Include="images\icon_27_2.png" />
+    <Content Include="images\icon_27_20.png" />
+    <Content Include="images\icon_27_200.png" />
+    <Content Include="images\icon_27_201.png" />
+    <Content Include="images\icon_27_203.png" />
+    <Content Include="images\icon_27_204.png" />
+    <Content Include="images\icon_27_207.png" />
+    <Content Include="images\icon_27_208.png" />
+    <Content Include="images\icon_27_209.png" />
+    <Content Include="images\icon_27_21.png" />
+    <Content Include="images\icon_27_210.png" />
+    <Content Include="images\icon_27_211.png" />
+    <Content Include="images\icon_27_212.png" />
+    <Content Include="images\icon_27_219.png" />
+    <Content Include="images\icon_27_22.png" />
+    <Content Include="images\icon_27_220.png" />
+    <Content Include="images\icon_27_221.png" />
+    <Content Include="images\icon_27_23.png" />
+    <Content Include="images\icon_27_230.png" />
+    <Content Include="images\icon_27_260.png" />
+    <Content Include="images\icon_27_29.png" />
+    <Content Include="images\icon_27_3.png" />
+    <Content Include="images\icon_27_30.png" />
+    <Content Include="images\icon_27_304.png" />
+    <Content Include="images\icon_27_31.png" />
+    <Content Include="images\icon_27_32.png" />
+    <Content Include="images\icon_27_34.png" />
+    <Content Include="images\icon_27_38.png" />
+    <Content Include="images\icon_27_389.png" />
+    <Content Include="images\icon_27_392.png" />
+    <Content Include="images\icon_27_4.png" />
+    <Content Include="images\icon_27_403.png" />
+    <Content Include="images\icon_27_413.png" />
+    <Content Include="images\icon_27_453.png" />
+    <Content Include="images\icon_27_461.png" />
+    <Content Include="images\icon_27_47.png" />
+    <Content Include="images\icon_27_5.png" />
+    <Content Include="images\icon_27_51.png" />
+    <Content Include="images\icon_27_53.png" />
+    <Content Include="images\icon_27_54.png" />
+    <Content Include="images\icon_27_55.png" />
+    <Content Include="images\icon_27_56.png" />
+    <Content Include="images\icon_27_61.png" />
+    <Content Include="images\icon_27_63.png" />
+    <Content Include="images\icon_27_64.png" />
+    <Content Include="images\icon_27_65.png" />
+    <Content Include="images\icon_27_66.png" />
+    <Content Include="images\icon_27_69.png" />
+    <Content Include="images\icon_27_71.png" />
+    <Content Include="images\icon_27_72.png" />
+    <Content Include="images\icon_27_73.png" />
+    <Content Include="images\icon_27_80.png" />
+    <Content Include="images\icon_27_81.png" />
+    <Content Include="images\icon_27_82.png" />
+    <Content Include="images\icon_27_89.png" />
+    <Content Include="images\icon_27_94.png" />
+    <Content Include="images\icon_27_98.png" />
+    <Content Include="images\icon_27_99.png" />
+    <Content Include="images\icon_30_12.png" />
+    <Content Include="images\icon_30_13.png" />
+    <Content Include="images\icon_30_279.png" />
+    <Content Include="images\icon_30_280.png" />
+    <Content Include="images\icon_30_281.png" />
+    <Content Include="images\icon_30_282.png" />
+    <Content Include="images\icon_30_283.png" />
+    <Content Include="images\icon_30_32.png" />
+    <Content Include="images\icon_30_477.png" />
+    <Content Include="images\icon_30_7.png" />
+    <Content Include="images\icon_unselected.png" />
+    <Content Include="images\nav_refresh.png" />
+    <Content Include="index.html" />
+    <Content Include="scripts\css\bootstrap-theme.css" />
+    <Content Include="scripts\css\bootstrap-theme.min.css" />
+    <Content Include="scripts\css\bootstrap.css" />
+    <Content Include="scripts\css\bootstrap.min.css" />
+    <Content Include="scripts\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="scripts\js\anno2070.js" />
+    <Content Include="scripts\js\anno2070data.js" />
+    <Content Include="scripts\js\bootstrap.min.js" />
+    <Content Include="scripts\js\knockout-3.1.0.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>6247</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6247/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
+
+	<title>Anno 2070 Utility</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="/scripts/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Just for debugging purposes. Don't actually copy this line! -->
+	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="scripts/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/scripts/js/knockout-3.1.0.js"></script>
+
+	<script>
+		$(function () {
+			$("#tabs").tabs({
+				event: "mousedown",
+				beforeActivate: function (event, ui) {
+					var index = ui.newTab.index();
+
+					if (index == 3) { // Calculator tab
+						event.preventDefault(); // don't open tab
+						$('#myModal').modal();
+					}
+				}
+			});
+		});
+
+		function UpdatePC() {
+			$("#pc input.numOfBuildings").each(function () {
+				var spinner = $(this).spinner({
+					step: 0.01
+				});
+
+				if (spinner.hasClass("disable")) {
+					spinner.spinner("disable");
+				} else {
+					spinner.spinner("enable");
+				}
+			});
+		}
+	</script>
+
+</head>
+<body>
+
+	<!-- Begin page content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>Anno 2070 Utility</h1>
+		</div>
+
+		<div id="tabs">
+			<ul>
+				<li data-bind="click: ShowFaction.bind($data, 'Eco')"><a href="#tabs-1"><img src="images/icon_27_98.png" alt="Eco" /></a></li>
+				<li data-bind="click: ShowFaction.bind($data, 'Tycoon')"><a href="#tabs-1"><img src="images/icon_27_99.png" alt="Tycoon" /></a></li>
+				<li data-bind="click: ShowFaction.bind($data, 'Tech')"><a href="#tabs-1"><img src="images/icon_27_100.png" alt="Tech" /></a></li>
+
+				<li style="float:right;"><a href="#"><img src="images/icon_27_192.png" alt="Calculate" /></a></li>
+			</ul>
+			<div id="tabs-1">
+
+				<div id="pcs" class="row" data-bind="foreach: ProductionChains[CurrentFaction()]">
+					<div class="col-md-3" style="text-align:center;">
+						<a data-bind="click: $root.ShowProductionChain" href="#">
+							<img data-bind="attr: { src: icon }" />
+							<div style="text-wrap:none">
+								<span data-bind="visible: !raw(), text: local"></span>
+								<span data-bind="if: raw,"><span data-bind="text: chain[0].numOfBuildings.extend({ numeric: 1 })() + ' @ ' + chain[0].buildingEfficiency.extend({ percent: null })() + '%'"></span></span>
+							</div>
+						</a>
+					</div>
+				</div> <!--PCS-->
+
+				<div id="pc" style="display: none;" data-bind="if: CurrentProductionChain">
+					<button data-bind="click: Back">Back</button>
+
+					<table style="width:100%;" data-bind="foreach: CurrentProductionChain().chain">
+						<tr>
+							<td data-bind="text: local"></td>
+						</tr>
+						<tr>
+							<td>
+								<div data-bind="style: { width: (indent * 30 + 'px') }" style="display:block; height:46px; float:left;">
+
+								</div>
+								<div data-bind="click: function() { changeDisabled(); UpdatePC(); }" style="width:46px; float:left; height:46px; display:inline-block">
+									<img style="z-index: 1; position:absolute" data-bind="attr: { src: icon }" />
+									<span data-bind="if: disabled">
+										<img style="z-index: 2; position:absolute" src="images/icon_unselected.png" />
+									</span>
+								</div>
+								<div style="float:left; height:46px;">
+									<span data-bind="if: disabled">
+										<input data-bind="value: numOfBuildings.extend({ numeric: 2 })" class="numOfBuildings disable" />
+									</span>
+									<span data-bind="ifnot: disabled">
+										<input data-bind="value: numOfBuildings.extend({ numeric: 2 })" class="numOfBuildings" />
+									</span>
+
+									@
+									<span data-bind="text: buildingEfficiency.extend({ percent: null })"></span>%
+								</div>
+								<div style="overflow:hidden;">
+									<input data-bind="value: buildingEfficiency.extend({ percent: 'set' })" type="range" step="5" min="50" max="300">
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div> <!--PC-->
+
+			</div> <!--TABS-1-->
+		</div> <!--TABS-->
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Calculator</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-inline" data-bind="with: Population[CurrentFaction()]">
+
+							<div class="form-group"> <!--SELECT-->
+								<img src="images/icon_27_453.png" />
+								<input data-bind="value: BuildingCount, valueUpdate: 'afterkeydown'" class="form-control" placeholder="total buildings" />
+								<select data-bind="options: Levels, optionsText: 'Text', value: $parent.Population[$parent.CurrentFaction()].MaxLevel, optionsCaption: 'select max level'" class="form-control"></select>
+							</div>
+
+							<div class="form-group"> <!--INHABITANTS-->
+								<div data-bind="foreach: Levels">
+									<img data-bind="attr: { src: 'images/' + Icon + '.png' }" />
+									<input data-bind="attr: { placeholder: Text }, value: Count, valueUpdate: 'afterkeydown', disable: Disabled" class="form-control" placeholder="" />
+									<br />
+								</div>
+							</div>
+
+							<br />
+
+							<div class="form-group">
+								<label class="checkbox-inline">
+									<input data-bind="checked: ExtraLivingSpace" type="checkbox" value="option1"> Extra Living Space
+								</label>
+								<label class="checkbox-inline">
+									<input type="checkbox" value="option1"> Autofill
+								</label>
+							</div>
+
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click: ApplyPopulation">OK</button>
+					</div>
+				</div>
+			</div>
+		</div> <!--MODAL-->
+
+	</div>
+
+	<div id="footer">
+		<div class="container">
+			<p class="text-muted">Place sticky footer content here.</p>
+		</div>
+	</div>
+
+	<script src="scripts/js/anno2070data.js"></script>
+	<script src="scripts/js/anno2070.js"></script>
+</body>
+</html>

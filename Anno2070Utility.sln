@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anno2070Utility", "Anno2070Utility\Anno2070Utility.csproj", "{64D3E4EC-61FA-49B1-9067-84482944F4E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Anno2070XmlToJson", "Anno2070XmlToJson\Anno2070XmlToJson.csproj", "{866A942B-6F4F-44DA-9FCA-5F9BFDA66712}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64D3E4EC-61FA-49B1-9067-84482944F4E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D3E4EC-61FA-49B1-9067-84482944F4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D3E4EC-61FA-49B1-9067-84482944F4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D3E4EC-61FA-49B1-9067-84482944F4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{866A942B-6F4F-44DA-9FCA-5F9BFDA66712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{866A942B-6F4F-44DA-9FCA-5F9BFDA66712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{866A942B-6F4F-44DA-9FCA-5F9BFDA66712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{866A942B-6F4F-44DA-9FCA-5F9BFDA66712}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
