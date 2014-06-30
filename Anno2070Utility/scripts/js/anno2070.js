@@ -289,16 +289,14 @@ Calculator = (function () {
 		}
 
 		// Loop through all the upper levels and calculate the number of buildings each level has.
-		for (i = 0; i <= 3; i++) {
-			if (i + 1 >= maxLevel) {
-				bs[i] = Math.floor(buildingsRemaining);
-				break;
+		for (i = 0; i <= maxLevel - 1; i++) {
+			// subtract the buildings that are being upgraded from the previous level
+			if (i !== 0) {
+				bs[i - 1] = Math.ceil((buildingsRemaining * (1 - getPopulationUpgradePercent(faction, i))));
+				buildingsRemaining -= bs[i - 1];
 			}
 
-			// Calculate the number of buildings the current level has.
-			bs[i] = Math.ceil((buildingsRemaining * (1 - getPopulationUpgradePercent(faction, i + 1))));
-			// Subtract the number of buildings added to the current level.
-			buildingsRemaining -= bs[i];
+			bs[i] = buildingsRemaining;
 		}
 
 		return bs;
@@ -496,7 +494,7 @@ var ProductionChainsViewModel = function () {
 		]);
 
 	self.UpdatePopulation = function (focus, focusObj) {
-		if (!self.updating && self.Population[self.CurrentFaction()].MaxLevelNum() !== 0) {
+		if (!self.updating) {
 			self.updating = true;
 
 			var faction = self.CurrentFaction();
@@ -507,9 +505,10 @@ var ProductionChainsViewModel = function () {
 			var buildingCount;
 			var level = null;
 			if (focus === "BuildingCount" || focus === "MaxLevel" || focus === "ExtraLivingSpace") {
-				buildingCount = p.BuildingCount();
+				buildingCount = p.BuildingCount() % 1 === 0 ? p.BuildingCount() : 0;
 			} else {
-				var population = focusObj.Count();
+				population = focusObj.Count() % 1 === 0 ? focusObj.Count() : 0;
+
 				level = parseInt(focusObj.Level.substring(focusObj.Level.length - 1, focusObj.Level.length)) || 0;
 				// convert populations to buildings
 				buildingCount = Calculator.getNumberOfBuildings(faction, level, extraLiving, population);

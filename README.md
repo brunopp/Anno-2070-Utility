@@ -12,6 +12,4 @@ Contains
 TO-DO
 -----
 
-* Design needs work (looks poorly on mobile).
-* Some weird behavior on touch devices.
 * Disabling function under production chain is still a little buggy.

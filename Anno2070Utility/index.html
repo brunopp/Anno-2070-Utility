@@ -56,6 +56,22 @@
 			});
 		}
 	</script>
+	<style>
+		@media (max-width: 768px) {
+		  .miniImage {
+			  width:30px;
+			  height:30px;
+		  }
+		}
+
+		.modal-footer {
+			margin-top:0;
+		}
+
+		.imgDis {
+			margin-top:-7px;
+		}
+	</style>
 
 </head>
 <body>
@@ -68,11 +84,11 @@
 
 		<div id="tabs">
 			<ul>
-				<li data-bind="click: ShowFaction.bind($data, 'Eco')"><a href="#tabs-1"><img src="images/icon_27_98.png" alt="Eco" /></a></li>
-				<li data-bind="click: ShowFaction.bind($data, 'Tycoon')"><a href="#tabs-1"><img src="images/icon_27_99.png" alt="Tycoon" /></a></li>
-				<li data-bind="click: ShowFaction.bind($data, 'Tech')"><a href="#tabs-1"><img src="images/icon_27_100.png" alt="Tech" /></a></li>
+				<li data-bind="click: ShowFaction.bind($data, 'Eco')"><a href="#tabs-1"><img src="images/icon_27_98.png" class="miniImage" alt="Eco" /></a></li>
+				<li data-bind="click: ShowFaction.bind($data, 'Tycoon')"><a href="#tabs-1"><img src="images/icon_27_99.png" class="miniImage" alt="Tycoon" /></a></li>
+				<li data-bind="click: ShowFaction.bind($data, 'Tech')"><a href="#tabs-1"><img src="images/icon_27_100.png" class="miniImage" alt="Tech" /></a></li>
 
-				<li style="float:right;"><a href="#"><img src="images/icon_27_192.png" alt="Calculate" /></a></li>
+				<li style="float:right;"><a href="#"><img src="images/icon_27_192.png" class="miniImage" alt="Calculate" /></a></li>
 			</ul>
 			<div id="tabs-1">
 
@@ -139,28 +155,34 @@
 					<div class="modal-body">
 						<form class="form-inline" data-bind="with: Population[CurrentFaction()]">
 
-							<div class="form-group"> <!--SELECT-->
-								<img src="images/icon_27_453.png" />
-								<input data-bind="value: BuildingCount, valueUpdate: 'afterkeydown'" class="form-control" placeholder="total buildings" />
+							<div style="margin-top:5px;" class="input-group"> <!--MAX LEVEL-->
+								<span class="input-group-btn">
+									<img class="imgDis" src="images/icon_27_403.png" />
+								</span>
 								<select data-bind="options: Levels, optionsText: 'Text', value: $parent.Population[$parent.CurrentFaction()].MaxLevel, optionsCaption: 'select max level'" class="form-control"></select>
 							</div>
 
-							<div class="form-group"> <!--INHABITANTS-->
-								<div data-bind="foreach: Levels">
-									<img data-bind="attr: { src: 'images/' + Icon + '.png' }" />
-									<input data-bind="attr: { placeholder: Text }, value: Count, valueUpdate: 'afterkeydown', disable: Disabled" class="form-control" placeholder="" />
-									<br />
+							<div class="input-group"> <!--BUILDINGS-->
+								<span class="input-group-btn">
+									<img class="imgDis" src="images/icon_27_453.png" />
+								</span>
+								<input data-bind="value: BuildingCount, valueUpdate: ['input', 'keyup']" class="form-control" placeholder="total buildings" />
+							</div>
+
+							<div data-bind="foreach: Levels"> <!--INHABITANTS-->
+								<div style="margin-top:5px;" class="input-group">
+									<span class="input-group-btn">
+										<img class="imgDis" data-bind="attr: { src: 'images/' + Icon + '.png' }" />
+									</span>
+									<input data-bind="attr: { placeholder: Text }, value: Count, valueUpdate: ['input', 'keyup'], disable: Disabled" class="form-control" placeholder="" />
 								</div>
 							</div>
 
 							<br />
 
-							<div class="form-group">
+							<div class="input-group">
 								<label class="checkbox-inline">
 									<input data-bind="checked: ExtraLivingSpace" type="checkbox" value="option1"> Extra Living Space
-								</label>
-								<label class="checkbox-inline">
-									<input type="checkbox" value="option1"> Autofill
 								</label>
 							</div>
 
