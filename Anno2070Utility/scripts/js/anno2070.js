@@ -535,6 +535,9 @@ var ProductionChainsViewModel = function () {
 					num += b[i];
 				}
 
+				if (maxLevel === 0) {
+					num = buildingCount;
+				}
 				p.BuildingCount(num);
 			}
 

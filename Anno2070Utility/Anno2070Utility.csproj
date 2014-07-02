@@ -57,11 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="scripts\css\bootstrap-theme.css.map" />
-    <Content Include="scripts\css\bootstrap.css.map" />
-    <Content Include="scripts\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="scripts\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="scripts\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="m.index.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -197,15 +193,8 @@
     <Content Include="images\icon_unselected.png" />
     <Content Include="images\nav_refresh.png" />
     <Content Include="index.html" />
-    <Content Include="scripts\css\bootstrap-theme.css" />
-    <Content Include="scripts\css\bootstrap-theme.min.css" />
-    <Content Include="scripts\css\bootstrap.css" />
-    <Content Include="scripts\css\bootstrap.min.css" />
-    <Content Include="scripts\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="scripts\js\anno2070.js" />
     <Content Include="scripts\js\anno2070data.js" />
-    <Content Include="scripts\js\bootstrap.min.js" />
-    <Content Include="scripts\js\knockout-3.1.0.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

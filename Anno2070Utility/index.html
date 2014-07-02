@@ -10,8 +10,17 @@
 
 	<title>Anno 2070 Utility</title>
 
+	<!-- JQuery -->
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
 	<!-- Bootstrap core CSS -->
-	<link href="/scripts/css/bootstrap.min.css" rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+	<!-- Knockout -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
 
 	<!-- Just for debugging purposes. Don't actually copy this line! -->
 	<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -21,11 +30,6 @@
 	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<script src="scripts/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/scripts/js/knockout-3.1.0.js"></script>
 
 	<script>
 		$(function () {
@@ -113,9 +117,6 @@
 						</tr>
 						<tr>
 							<td>
-								<div data-bind="style: { width: (indent * 30 + 'px') }" style="display:block; height:46px; float:left;">
-
-								</div>
 								<div data-bind="click: function() { changeDisabled(); UpdatePC(); }" style="width:46px; float:left; height:46px; display:inline-block">
 									<img style="z-index: 1; position:absolute" data-bind="attr: { src: icon }" />
 									<span data-bind="if: disabled">

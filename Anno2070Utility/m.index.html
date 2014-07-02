@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Anno 2070 Utility</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+
+	<!-- JQuery Mobile -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+	<!-- Knockout -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
+
+	<style>
+		@media (min-width: 768px) {
+			#one {
+				width: 700px;
+				margin-left: auto;
+				margin-right: auto;
+				position: relative;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.ui-content {
+				padding: 0.1em;
+			}
+		}
+
+		.pc {
+			text-align: center;
+		}
+
+		.icon {
+			float:left;
+		}
+
+		.icon-for {
+			overflow:hidden;
+			padding: 0 10px 0 10px;
+		}
+
+		.popup-dialog-btn {
+			float: right;
+		}
+	</style>
+
+</head>
+<body>
+
+	<!-- Start of first page: #one -->
+	<div data-role="page" id="one">
+
+	<h1>Anno 2070 Utility</h1>
+
+	<div role="main" class="ui-content">
+
+
+		<div data-role="tabs" id="tabs">
+			<div data-role="navbar">
+				<ul>
+					<li><a data-bind="click: ShowFaction.bind($data, 'Eco')" href="#one" data-ajax="false"><img src="images/icon_27_98.png" /></a></li>
+					<li><a data-bind="click: ShowFaction.bind($data, 'Tycoon')" href="#one" data-ajax="false"><img src="images/icon_27_99.png" /></a></li>
+					<li><a data-bind="click: ShowFaction.bind($data, 'Tech')" href="#one" data-ajax="false"><img src="images/icon_27_100.png" /></a></li>
+					<li><a href="#" data-ajax="false"><img src="images/icon_27_192.png" /></a></li>
+				</ul>
+			</div>
+			<div id="tab-1" class="ui-body-d ui-content" style="padding:0;">
+
+				<div id="pcs" data-bind="foreach: ProductionChains[CurrentFaction()]" class="ui-grid-b ui-responsive">
+					<div data-bind="css: gridclass($index())">
+						<div class="ui-body ui-body-d pc">
+							<a data-bind="click: $root.ShowProductionChain" href="#">
+								<img data-bind="attr: { src: icon }" />
+
+								<div style="text-wrap:none">
+									<span data-bind="visible: !raw(), text: local"></span>
+									<span data-bind="if: raw,"><span data-bind="text: chain[0].numOfBuildings.extend({ numeric: 1 })() + ' @ ' + chain[0].buildingEfficiency.extend({ percent: null })() + '%'"></span></span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div> <!--PCS-->
+
+				<div id="pc" style="display: none;" data-bind="if: CurrentProductionChain">
+					<button data-bind="click: Back">Back</button>
+
+					<table style="width:100%;" data-bind="foreach: CurrentProductionChain().chain">
+						<tr>
+							<td data-bind="text: local"></td>
+						</tr>
+						<tr>
+							<td>
+								<div data-bind="click: function() { changeDisabled(); UpdatePC(); }" style="width:46px; float:left; height:46px; display:inline-block">
+									<img style="z-index: 1; position:absolute" data-bind="attr: { src: icon }" />
+									<span data-bind="if: disabled">
+										<img style="z-index: 2; position:absolute" src="images/icon_unselected.png" />
+									</span>
+								</div>
+								<div style="float:left; height:46px;">
+									<span data-bind="if: disabled">
+										<input data-bind="value: numOfBuildings.extend({ numeric: 2 })" class="numOfBuildings disable" />
+									</span>
+									<span data-bind="ifnot: disabled">
+										<input data-bind="value: numOfBuildings.extend({ numeric: 2 })" class="numOfBuildings" />
+									</span>
+
+									@
+									<span data-bind="text: buildingEfficiency.extend({ percent: null })"></span>%
+								</div>
+								<div style="overflow:hidden;">
+									<input data-bind="value: buildingEfficiency.extend({ percent: 'set' })" type="range" step="5" min="50" max="300">
+								</div>
+
+							</td>
+						</tr>
+					</table>
+				</div> <!--PC-->
+
+			</div> <!--tab-1-->
+		</div> <!--tabs-->
+
+		<!--Not shown (needed for javascript)-->
+		<a id="popuplink" style="display:none;" href="#popup" class="ui-btn ui-shadow ui-corner-all" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a>
+
+	</div><!-- /content -->
+	</div><!-- /page one -->
+
+
+	<!-- Calculator -->
+	<div data-role="page" id="popup">
+		<div data-role="header" data-theme="b">
+			<h1>Calculator</h1>
+		</div><!-- /header -->
+
+		<div role="main" class="ui-content">
+
+			<div data-bind="with: Population[CurrentFaction()]">
+				<div>
+					<div class="icon"><img src="images/icon_27_403.png" /></div>
+					<div class="icon-for">
+						<select data-bind="options: Levels, optionsText: 'Text', value: $parent.Population[$parent.CurrentFaction()].MaxLevel, optionsCaption: 'select max level'"></select>
+					</div>
+				</div>
+				<div>
+					<div class="icon"><img src="images/icon_27_453.png" /></div>
+					<div class="icon-for"><input data-bind="value: BuildingCount, valueUpdate: ['input', 'keyup']" placeholder="total buildings" type="text"></div>
+				</div>
+				<div data-bind="foreach: Levels">
+					<div>
+						<div class="icon"><img data-bind="attr: { src: 'images/' + Icon + '.png' }" /></div>
+						<div class="icon-for"><input data-bind="attr: { placeholder: Text }, value: Count, valueUpdate: ['input', 'keyup'], css: { 'ui-disabled': Disabled }" placeholder="total buildings" type="text"></div>
+					</div>
+				</div>
+				<div>
+					<div>
+						<input data-bind="checked: ExtraLivingSpace" type="checkbox" id="checkbox-extraLivingSpace">
+						<label for="checkbox-extraLivingSpace">Extra Living Space</label>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="popup-dialog-btn"><a href="#tab-1" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Cancel</a></div>
+				<div class="popup-dialog-btn"><a data-bind="click: function() { ApplyPopulation(); return true; }" href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">OK</a></div>
+			</div>
+			
+		</div><!--content-->
+
+	</div><!--Calculator-->
+
+
+	<script>
+	$(function () {
+		$("#tabs").tabs({
+			event: "mouseup",
+			beforeActivate: function (event, ui) {
+				var index = ui.newTab.index();
+
+				if (index == 3) { // Calculator tab
+					event.preventDefault(); // don't open tab
+					$("#popuplink").click();
+				}
+			}
+		});
+	});
+
+	function gridclass(i) {
+		if (i % 3 === 0) {
+			return 'ui-block-a';
+		} else if (i % 3 === 1) {
+			return 'ui-block-b';
+		} else if (i % 3 === 2) {
+			return 'ui-block-c';
+		}
+	}
+
+	function UpdatePC() {
+		//$('[type="range"]').slider();
+	}
+	</script>
+
+	<script src="scripts/js/anno2070data.js"></script>
+	<script src="scripts/js/anno2070.js"></script>
+
+</body>
+</html>
