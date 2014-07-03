@@ -623,3 +623,28 @@ ko.extenders.percent = function (target, option) {
 	result.raw = target;
 	return result;
 };
+
+
+// http://www.programico.com/1/post/2012/12/knockoutjs-jquerymobile-slider.html
+// add data binding to JQuery mobile slider
+ko.bindingHandlers.slider = {
+	init: function (element, valueAccessor) {
+		// use setTimeout with 0 to run this after Knockout is done
+		setTimeout(function () {
+			// $(element) doesn't work as that has been removed from the DOM
+			var curSlider = $('#' + element.id);
+			// helper function that updates the slider and refreshes the thumb location
+			function setSliderValue(newValue) {
+				curSlider.val(newValue).slider('refresh');
+			}
+			// subscribe to the bound observable and update the slider when it changes
+			valueAccessor().subscribe(setSliderValue);
+			// set up the initial value, which of course is NOT stored in curSlider, but the original element :\
+			setSliderValue($(element).val());
+			// subscribe to the slider's change event and update the bound observable
+			curSlider.bind('change', function () {
+				valueAccessor()(curSlider.val());
+			});
+		}, 0);
+	}
+};
