@@ -12,7 +12,7 @@ Contains
 Demo
 ----
 
-Available on [brunopp.dk/anno2070utility](www.brunopp.dk/anno2070utility).
+Available on [http://brunopp.dk/anno2070utility](www.brunopp.dk/anno2070utility).
 
 Android version available on [Google Play](https://play.google.com/store/apps/details?id=dk.brunoapps.anno2070utility).
 
