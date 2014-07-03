@@ -13,4 +13,3 @@ TO-DO
 -----
 
 * Disabling function under production chain is still a little buggy.
-* Design needs work (looks poorly on mobile).
